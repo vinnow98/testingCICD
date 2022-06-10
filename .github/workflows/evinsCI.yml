@@ -47,7 +47,7 @@ jobs: #job to execute?
         go get github.com/franela/goblin
         go install github.com/tebeka/go2xunit@latest
         go test -v
-        go test -v | go2xunit >output tests.xml
+        go test -v | go2xunit -input tests.xml
         
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1
