@@ -14,3 +14,10 @@ jobs: #job to execute?
       run: | # run terminal command
         ls
         echo Hello!! #
+    - name: Setup Go
+      uses: actions/setup-go@v3.2.0
+      with:
+        go-version: 1.18
+    - name: Check Go Version
+      run: go version
+
