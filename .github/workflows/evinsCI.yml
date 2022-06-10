@@ -21,3 +21,8 @@ jobs: #job to execute?
     - name: Check Go Version
       run: go version
 
+    - name: Checkout Repo
+      uses: actions/checkout@v2.4.2
+      
+    - name: Check File System
+      run: ls
