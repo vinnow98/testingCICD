@@ -1,1 +1,45 @@
-
+name: CI for using Whatsapp
+on: 
+  push:
+    branches: [main] #add with comma for more branches to monitor
+  pull_request:
+    branches: [main]
+    
+jobs: #job to execute?
+  build: #name of the job
+    name: Load OS # name for printing
+    runs-on: ubuntu-latest # specify os in virtual machine
+    steps: 
+      - name: Whatsapp Actions for Github
+  # You may pin to the exact commit or the version.
+  # uses: kaviadigdarshan/whatsapp-actions@30e72ee9df4ba442e64330576de12170524df327
+        uses: kaviadigdarshan/whatsapp-actions@v1.1
+        with:
+        # Sender Login for Push Event
+          push_sender: ${{ github.event.push.sender.login }}
+        # Avatar Image of Push Sender
+          push_sender_avatar: ${{ github.event.push.sender.avatar_url }}
+        # Pull Request Number
+          pr_number: ${{ github.event.pull_request.number }}
+        # Pull Request Title
+          pr_title: ${{ github.event.pull_request.title }}
+        # Pull Request Content
+          pr_body: ${{ github.event.pull_request.body }}
+        # Pull Request User
+          pr_user_name: ${{ github.event.pull_request.user.login }}
+        # Avatar Image of Pull Request User
+          pr_user_avatar: ${{ github.event.pull_request.user.avatar_url }}
+        # Issue Title
+          issue_title: ${{ github.event.issue.title }}
+        # Issue Number
+          issue_number: ${{ github.event.issue.number }}
+        # Issue Raised By
+          issue_sender: ${{ github.event.issue.sender.login }}
+        # Avatar Image of User who raised issue
+          issue_sender_avatar: ${{ github.event.issue.sender.avatar_url }}
+        # Issue Body
+          issue_body: ${{ github.event.issue.body }}
+        # Number of Forks
+          repo_fork_count:  ${{ github.event.repository.forks_count }}
+        # Number of Watch
+          repo_watch_count: ${{ github.event.repository.watchers_count }}
