@@ -18,4 +18,4 @@ jobs: #job to execute?
           twilio_auth: ${{ secrets.twilio_auth }}
           to: ${{ secrets.TWILIO_TO_WHATSAPP_NO }}
           message: "push or pull happening!"
-          uses: mdb571/wa-action@v1.0
+          uses: KhaledAhmed-Ibtikar/whatsapp-push-notify-action@1.3
