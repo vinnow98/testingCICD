@@ -9,37 +9,18 @@ jobs: #job to execute?
   build: #name of the job
     name: Load OS # name for printing
     runs-on: ubuntu-latest # specify os in virtual machine
-    steps: 
-      - name: Whatsapp Actions for Github
+    steps:
+      - uses: actions/checkout@v2.4.2
+      - name: Twilio-Whatsapp Action
   # You may pin to the exact commit or the version.
-  # uses: kaviadigdarshan/whatsapp-actions@30e72ee9df4ba442e64330576de12170524df327
-        uses: kaviadigdarshan/whatsapp-actions@v1.1
+  # uses: mdb571/wa-action@a060b1dc0c137d4f889c23f0732f074c8ec7bf87
+        uses: mdb571/wa-action@v1.0
         with:
-        # Sender Login for Push Event
-          push_sender: ${{ github.event.push.sender.login }}
-        # Avatar Image of Push Sender
-          push_sender_avatar: ${{ github.event.push.sender.avatar_url }}
-        # Pull Request Number
-          pr_number: ${{ github.event.pull_request.number }}
-        # Pull Request Title
-          pr_title: ${{ github.event.pull_request.title }}
-        # Pull Request Content
-          pr_body: ${{ github.event.pull_request.body }}
-        # Pull Request User
-          pr_user_name: ${{ github.event.pull_request.user.login }}
-        # Avatar Image of Pull Request User
-          pr_user_avatar: ${{ github.event.pull_request.user.avatar_url }}
-        # Issue Title
-          issue_title: ${{ github.event.issue.title }}
-        # Issue Number
-          issue_number: ${{ github.event.issue.number }}
-        # Issue Raised By
-          issue_sender: ${{ github.event.issue.sender.login }}
-        # Avatar Image of User who raised issue
-          issue_sender_avatar: ${{ github.event.issue.sender.avatar_url }}
-        # Issue Body
-          issue_body: ${{ github.event.issue.body }}
-        # Number of Forks
-          repo_fork_count:  ${{ github.event.repository.forks_count }}
-        # Number of Watch
-          repo_watch_count: ${{ github.event.repository.watchers_count }}
+          # The twilio whatsapp number from which the sms should be sent
+          from: +1 (415) 523-8886
+          # The number which is configured with twilio
+          to: ${{ secrets.TWILIO_TO_WHATSAPP_NO}}
+          # Twilio Accout SID from twilio console
+          twilio_account_sid: ${{ secrets.twilio_account_sid }}
+          # Twilio Authentication token from console
+          twilio_auth: ${{ secrets.twilio_auth }}
